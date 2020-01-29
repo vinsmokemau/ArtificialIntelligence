@@ -23,6 +23,9 @@ for n_clusters in no_of_clusters:
     # Getting the cluster centers
     centers = kmeans.cluster_centers_
 
+    print("kmeans: ", kmeans)
+    print("Lables: ", labels)
+
     plt.figure(n_clusters)
     plt.plot(X[:, 0], X[:, 1], 'bo')
     plt.plot(centers[:, 0], centers[:, 1], 'r*')
