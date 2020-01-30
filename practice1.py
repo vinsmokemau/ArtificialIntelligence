@@ -1,7 +1,8 @@
 """Practice 1: Compare Validity Clusters."""
-from sklearn.datasets import make_blobs
+from scipy.stats import entropy
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+from sklearn.datasets import make_blobs
 from sklearn.metrics import silhouette_score
 
 # Generating the sample data from make_blobs
@@ -22,9 +23,6 @@ for n_clusters in no_of_clusters:
     labels = kmeans.predict(X)
     # Getting the cluster centers
     centers = kmeans.cluster_centers_
-
-    print("kmeans: ", kmeans)
-    print("Lables: ", labels)
 
     plt.figure(n_clusters)
     plt.plot(X[:, 0], X[:, 1], 'bo')
