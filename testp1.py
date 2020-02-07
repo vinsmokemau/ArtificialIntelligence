@@ -21,7 +21,7 @@ for n_clusters in no_of_clusters:
     U = np.zeros((n_clusters, 100))
     epsilon = 1
 
-    while epsilon > 10**(-50):
+    while epsilon > 10**(-10):
         Vold = np.array(V)
         for i in range(n_clusters):
             for k in range(n):
@@ -47,7 +47,16 @@ for n_clusters in no_of_clusters:
                 V[i, j] = c / d
         epsilon = sum(sum(abs(Vold[:] - V[:])))
 
-    print('Una menos')
+    total_entropy = 0
+
+    for i in range(n_clusters):
+        total_entropy += entropy(U[i])
+
+    total_entropy *= -(1 / 100)
+
+    print("For no of clusters =", n_clusters,
+          " The entropy is :", total_entropy)
+
     plt.figure(n_clusters)
     plt.plot(X[:, 0], X[:, 1], 'bo')
     plt.plot(V[:, 0], V[:, 1], 'r*')
