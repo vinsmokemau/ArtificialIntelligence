@@ -48,7 +48,6 @@ class App(QMainWindow):
 
         if self.start < 0.5:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
         self.button1.resize(60, 60)
         self.button2.resize(60, 60)
@@ -99,9 +98,6 @@ class App(QMainWindow):
         self.button9.setEnabled(False)
         self.restart.setEnabled(True)
         self.ends = True
-
-    def block(self):
-        pass
 
     def game_validation(self):
         if (self.game[0] != 0) and (self.game[0] == self.game[4] and self.game[4] == self.game[8]):
@@ -157,51 +153,288 @@ class App(QMainWindow):
             self.label.setText('Empate')
 
     def computer_throw(self, number):
-        if number == 1:
+        # Try to win
+        if (self.game[0] == 0) and (self.game[3] == self.game[6] and self.game[3] == 2):
             self.button1.setEnabled(False)
             self.button1.setText("O")
-            self.game[1 - 1] = 2
-            self.game_validation()
-        elif number == 2:
-            self.button2.setEnabled(False)
-            self.button2.setText("O")
-            self.game[2 - 1] = 2
-            self.game_validation()
-        elif number == 3:
-            self.button3.setEnabled(False)
-            self.button3.setText("O")
-            self.game[3 - 1] = 2
-            self.game_validation()
-        elif number == 4:
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[3] == 0) and (self.game[0] == self.game[6] and self.game[6] == 2):
             self.button4.setEnabled(False)
             self.button4.setText("O")
-            self.game[4 - 1] = 2
-            self.game_validation()
-        elif number == 5:
-            self.button5.setEnabled(False)
-            self.button5.setText("O")
-            self.game[5 - 1] = 2
-            self.game_validation()
-        elif number == 6:
-            self.button6.setEnabled(False)
-            self.button6.setText("O")
-            self.game[6 - 1] = 2
-            self.game_validation()
-        elif number == 7:
+            self.game[3] = 2
+            self.throws.remove(4)
+        elif (self.game[6] == 0) and (self.game[0] == self.game[3] and self.game[3] == 2):
             self.button7.setEnabled(False)
             self.button7.setText("O")
-            self.game[7 - 1] = 2
-            self.game_validation()
-        elif number == 8:
+            self.game[6] = 2
+            self.throws.remove(7)
+        elif (self.game[1] == 0) and (self.game[4] == self.game[7] and self.game[7] == 2):
+            self.button2.setEnabled(False)
+            self.button2.setText("O")
+            self.game[1] = 2
+            self.throws.remove(2)
+        elif (self.game[4] == 0) and (self.game[1] == self.game[7] and self.game[7] == 2):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[7] == 0) and (self.game[1] == self.game[4] and self.game[4] == 2):
             self.button8.setEnabled(False)
             self.button8.setText("O")
-            self.game[8 - 1] = 2
-            self.game_validation()
-        elif number == 9:
+            self.game[7] = 2
+            self.throws.remove(8)
+        elif (self.game[2] == 0) and (self.game[5] == self.game[8] and self.game[8] == 2):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[5] == 0) and (self.game[2] == self.game[8] and self.game[8] == 2):
+            self.button6.setEnabled(False)
+            self.button6.setText("O")
+            self.game[5] = 2
+            self.throws.remove(6)
+        elif (self.game[8] == 0) and (self.game[2] == self.game[5] and self.game[5] == 2):
             self.button9.setEnabled(False)
             self.button9.setText("O")
-            self.game[9 - 1] = 2
-            self.game_validation()
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[0] == 0) and (self.game[1] == self.game[2] and self.game[2] == 2):
+            self.button1.setEnabled(False)
+            self.button1.setText("O")
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[1] == 0) and (self.game[0] == self.game[2] and self.game[2] == 2):
+            self.button2.setEnabled(False)
+            self.button2.setText("O")
+            self.game[1] = 2
+            self.throws.remove(2)
+        elif (self.game[2] == 0) and (self.game[0] == self.game[1] and self.game[1] == 2):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[3] == 0) and (self.game[4] == self.game[5] and self.game[5] == 2):
+            self.button4.setEnabled(False)
+            self.button4.setText("O")
+            self.game[3] = 2
+            self.throws.remove(4)
+        elif (self.game[4] == 0) and (self.game[3] == self.game[5] and self.game[5] == 2):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[5] == 0) and (self.game[3] == self.game[4] and self.game[4] == 2):
+            self.button6.setEnabled(False)
+            self.button6.setText("O")
+            self.game[5] = 2
+            self.throws.remove(6)
+        elif (self.game[6] == 0) and (self.game[7] == self.game[8] and self.game[8] == 2):
+            self.button7.setEnabled(False)
+            self.button7.setText("O")
+            self.game[6] = 2
+            self.throws.remove(7)
+        elif (self.game[7] == 0) and (self.game[6] == self.game[8] and self.game[8] == 2):
+            self.button8.setEnabled(False)
+            self.button8.setText("O")
+            self.game[7] = 2
+            self.throws.remove(8)
+        elif (self.game[8] == 0) and (self.game[6] == self.game[7] and self.game[7] == 2):
+            self.button9.setEnabled(False)
+            self.button9.setText("O")
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[0] == 0) and (self.game[4] == self.game[8] and self.game[8] == 2):
+            self.button1.setEnabled(False)
+            self.button1.setText("O")
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[4] == 0) and (self.game[0] == self.game[8] and self.game[8] == 2):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[8] == 0) and (self.game[0] == self.game[4] and self.game[4] == 2):
+            self.button9.setEnabled(False)
+            self.button9.setText("O")
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[2] == 0) and (self.game[4] == self.game[6] and self.game[6] == 2):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[4] == 0) and (self.game[2] == self.game[6] and self.game[6] == 2):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[6] == 0) and (self.game[2] == self.game[4] and self.game[4] == 2):
+            self.button7.setEnabled(False)
+            self.button7.setText("O")
+            self.game[6] = 2
+            self.throws.remove(7)
+        # Try to block de user
+        elif (self.game[0] == 0) and (self.game[3] == self.game[6] and self.game[3] == 1):
+            self.button1.setEnabled(False)
+            self.button1.setText("O")
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[3] == 0) and (self.game[0] == self.game[6] and self.game[6] == 1):
+            self.button4.setEnabled(False)
+            self.button4.setText("O")
+            self.game[3] = 2
+            self.throws.remove(4)
+        elif (self.game[6] == 0) and (self.game[0] == self.game[3] and self.game[3] == 1):
+            self.button7.setEnabled(False)
+            self.button7.setText("O")
+            self.game[6] = 2
+            self.throws.remove(7)
+        elif (self.game[1] == 0) and (self.game[4] == self.game[7] and self.game[7] == 1):
+            self.button2.setEnabled(False)
+            self.button2.setText("O")
+            self.game[1] = 2
+            self.throws.remove(2)
+        elif (self.game[4] == 0) and (self.game[1] == self.game[7] and self.game[7] == 1):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[7] == 0) and (self.game[1] == self.game[4] and self.game[4] == 1):
+            self.button8.setEnabled(False)
+            self.button8.setText("O")
+            self.game[7] = 2
+            self.throws.remove(8)
+        elif (self.game[2] == 0) and (self.game[5] == self.game[8] and self.game[8] == 1):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[5] == 0) and (self.game[2] == self.game[8] and self.game[8] == 1):
+            self.button6.setEnabled(False)
+            self.button6.setText("O")
+            self.game[5] = 2
+            self.throws.remove(6)
+        elif (self.game[8] == 0) and (self.game[2] == self.game[5] and self.game[5] == 1):
+            self.button9.setEnabled(False)
+            self.button9.setText("O")
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[0] == 0) and (self.game[1] == self.game[2] and self.game[2] == 1):
+            self.button1.setEnabled(False)
+            self.button1.setText("O")
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[1] == 0) and (self.game[0] == self.game[2] and self.game[2] == 1):
+            self.button2.setEnabled(False)
+            self.button2.setText("O")
+            self.game[1] = 2
+            self.throws.remove(2)
+        elif (self.game[2] == 0) and (self.game[0] == self.game[1] and self.game[1] == 1):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[3] == 0) and (self.game[4] == self.game[5] and self.game[5] == 1):
+            self.button4.setEnabled(False)
+            self.button4.setText("O")
+            self.game[3] = 2
+            self.throws.remove(4)
+        elif (self.game[4] == 0) and (self.game[3] == self.game[5] and self.game[5] == 1):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[5] == 0) and (self.game[3] == self.game[4] and self.game[4] == 1):
+            self.button6.setEnabled(False)
+            self.button6.setText("O")
+            self.game[5] = 2
+            self.throws.remove(6)
+        elif (self.game[6] == 0) and (self.game[7] == self.game[8] and self.game[8] == 1):
+            self.button7.setEnabled(False)
+            self.button7.setText("O")
+            self.game[6] = 2
+            self.throws.remove(7)
+        elif (self.game[7] == 0) and (self.game[6] == self.game[8] and self.game[8] == 1):
+            self.button8.setEnabled(False)
+            self.button8.setText("O")
+            self.game[7] = 2
+            self.throws.remove(8)
+        elif (self.game[8] == 0) and (self.game[6] == self.game[7] and self.game[7] == 1):
+            self.button9.setEnabled(False)
+            self.button9.setText("O")
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[0] == 0) and (self.game[4] == self.game[8] and self.game[8] == 1):
+            self.button1.setEnabled(False)
+            self.button1.setText("O")
+            self.game[0] = 2
+            self.throws.remove(1)
+        elif (self.game[4] == 0) and (self.game[0] == self.game[8] and self.game[8] == 1):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[8] == 0) and (self.game[0] == self.game[4] and self.game[4] == 1):
+            self.button9.setEnabled(False)
+            self.button9.setText("O")
+            self.game[8] = 2
+            self.throws.remove(9)
+        elif (self.game[2] == 0) and (self.game[4] == self.game[6] and self.game[6] == 1):
+            self.button3.setEnabled(False)
+            self.button3.setText("O")
+            self.game[2] = 2
+            self.throws.remove(3)
+        elif (self.game[4] == 0) and (self.game[2] == self.game[6] and self.game[6] == 1):
+            self.button5.setEnabled(False)
+            self.button5.setText("O")
+            self.game[4] = 2
+            self.throws.remove(5)
+        elif (self.game[6] == 0) and (self.game[2] == self.game[4] and self.game[4] == 1):
+            self.button7.setEnabled(False)
+            self.button7.setText("O")
+            self.game[6] = 2
+            self.throws.remove(7)
+        else:
+            # Throw in the space with more probability of win
+            if number == 1:
+                self.button1.setEnabled(False)
+                self.button1.setText("O")
+                self.game[0] = 2
+            elif number == 2:
+                self.button2.setEnabled(False)
+                self.button2.setText("O")
+                self.game[2 - 1] = 2
+            elif number == 3:
+                self.button3.setEnabled(False)
+                self.button3.setText("O")
+                self.game[3 - 1] = 2
+            elif number == 4:
+                self.button4.setEnabled(False)
+                self.button4.setText("O")
+                self.game[4 - 1] = 2
+            elif number == 5:
+                self.button5.setEnabled(False)
+                self.button5.setText("O")
+                self.game[5 - 1] = 2
+            elif number == 6:
+                self.button6.setEnabled(False)
+                self.button6.setText("O")
+                self.game[6 - 1] = 2
+            elif number == 7:
+                self.button7.setEnabled(False)
+                self.button7.setText("O")
+                self.game[7 - 1] = 2
+            elif number == 8:
+                self.button8.setEnabled(False)
+                self.button8.setText("O")
+                self.game[8 - 1] = 2
+            elif number == 9:
+                self.button9.setEnabled(False)
+                self.button9.setText("O")
+                self.game[9 - 1] = 2
+            self.throws.remove(self.throws[0])
+        self.game_validation()
 
     def on_click_1(self):
         self.button1.setEnabled(False)
@@ -211,7 +444,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_2(self):
         self.button2.setEnabled(False)
@@ -221,7 +453,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_3(self):
         self.button3.setEnabled(False)
@@ -231,7 +462,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_4(self):
         self.button4.setEnabled(False)
@@ -241,7 +471,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_5(self):
         self.button5.setEnabled(False)
@@ -251,7 +480,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_6(self):
         self.button6.setEnabled(False)
@@ -261,7 +489,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_7(self):
         self.button7.setEnabled(False)
@@ -271,7 +498,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_8(self):
         self.button8.setEnabled(False)
@@ -281,7 +507,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def on_click_9(self):
         self.button9.setEnabled(False)
@@ -291,7 +516,6 @@ class App(QMainWindow):
         self.game_validation()
         if not self.ends:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
     def new_game(self):
         self.start = random()
@@ -320,9 +544,10 @@ class App(QMainWindow):
         self.button8.setText("")
         self.button9.setText("")
 
+        self.label.setText('Juguemos al Gato')
+
         if self.start < 0.5:
             self.computer_throw(self.throws[0])
-            self.throws.remove(self.throws[0])
 
 
 app = QApplication(sys.argv)
