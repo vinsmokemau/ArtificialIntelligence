@@ -595,7 +595,7 @@ class App(QMainWindow):
             self.computer_throw(self.throws[0])
 
     def new_game(self):
-        self.start = random() + 1
+        self.start = random()
         self.ends = False
         self.throws = [5, 9, 3, 7, 1, 2, 6, 8, 4]
         self.game = [0, 0, 0, 0, 0, 0, 0, 0, 0]
