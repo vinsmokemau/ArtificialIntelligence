@@ -20,6 +20,7 @@ tokens = [
 
 user_tokens = []
 computer_tokens = []
+
 for x in range(7):
     # Give a token to the user
     token_index = int(rd.random() * len(tokens))
@@ -31,13 +32,18 @@ for x in range(7):
     computer_tokens.append(tokens[token_index])
     tokens.remove(tokens[token_index])
 
+print('User Tokens: {}\n'.format(user_tokens))
+print('Computer Tokens: {}\n'.format(computer_tokens))
+
 # Look from who is the first turn
 for x in reversed(range(7)):
-    if [x, x] in user_tokens:
-        starts = 'user'
+    if (x, x) in user_tokens:
+        turn = 'user'
+        print('user have:', (x, x))
         break
-    elif [x, x] in computer_tokens:
-        starts = 'computer'
+    elif (x, x) in computer_tokens:
+        turn = 'computer'
+        print('computer have:', (x, x))
         break
 else:
     loop = True
@@ -46,11 +52,18 @@ else:
         for j in reversed(range(x)):
             if x != j:
                 if (j, x) in user_tokens:
-                    starts = 'user'
+                    turn = 'user'
+                    print('user have:', (j, x))
                     loop = False
                     break
                 elif (j, x) in computer_tokens:
-                    starts = 'computer'
+                    turn = 'computer'
+                    print('computer have:', (j, x))
                     loop = False
                     break
         x -= 1
+
+if turn == 'user':
+    pass
+else:
+    pass
