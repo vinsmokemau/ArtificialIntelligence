@@ -20,11 +20,7 @@ gamma = 0.2  # Forgetting Factor
 for epoch in range(150):
     n = (w0 * p0) + (w * p) + (b * 1)
     a = hardlim(np.array([n]))
-    print('W:', w)
-    print('Sum:', alpha * a[0] * p)
-    print('Minus:', gamma * w)
     w = w + (alpha * a[0] * p) - (gamma * w)
-    print('W new:', w)
     # w = w + (alpha * a[0] * p) - (gamma * w * a[0])
     if epoch > 10 and epoch < 60:
         p0 = 1
